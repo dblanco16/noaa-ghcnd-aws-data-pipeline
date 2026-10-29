@@ -15,14 +15,9 @@ La implementación inicial utiliza datos de Sudamérica correspondientes al per�
 - **Amazon SageMaker Canvas:** Machine Learning.
 - **AWS IAM, CloudWatch y CloudTrail:** seguridad y monitoreo.
 
-## Arquitectura
-
-[Ver documentación de arquitectura](docs/architecture.md)
-
 ## Documentación
 
-- [Arquitectura y decisiones técnicas](docs/architecture.md)
-- [Implementación y validaciones](docs/implementation-log.md)
+- [Arquitectura y decisiones técnicas](docs/arquitectura.md)
 
 ## Estado del proyecto
 
