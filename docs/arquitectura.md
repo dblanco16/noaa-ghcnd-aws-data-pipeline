@@ -10,6 +10,7 @@ La arquitectura permite incorporar nuevas fechas y regiones sin modificar su est
 
 ![Arquitectura AWS](../img/arquitectura.png)
 
+
 ## Componentes
 
 | Etapa | Tecnología | Función |
@@ -24,6 +25,24 @@ La arquitectura permite incorporar nuevas fechas y regiones sin modificar su est
 | Machine Learning | Amazon SageMaker Canvas | Modelo predictivo de regresión |
 | Seguridad | AWS IAM y Amazon S3 | Permisos, cifrado y versionado |
 | Monitoreo y auditoría | CloudWatch y CloudTrail | Seguimiento y trazabilidad |
+
+### Almacenamiento de datos — Amazon S3
+
+Se implementaron tres buckets Amazon S3 en la región `us-east-1`, diferenciados según su función dentro del pipeline:
+
+| Bucket | Propósito |
+|---|---|
+| `de-noaa-raw-dblanco16` | Almacenamiento de datos originales NOAA GHCN-D. |
+| `de-noaa-processed-dblanco16` | Destino de los datos transformados mediante AWS Glue. |
+| `de-noaa-athena-dblanco16` | Almacenamiento de resultados de consultas de Amazon Athena. |
+
+**Configuración:**
+- Acceso público bloqueado.
+- Cifrado predeterminado SSE-S3.
+- Versionado desactivado.
+- Object Lock desactivado.
+
+La separación en tres buckets permite administrar independientemente las zonas de datos originales, procesados y resultados de consultas.
 
 ## Flujo de procesamiento
 
