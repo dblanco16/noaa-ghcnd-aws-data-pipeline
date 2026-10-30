@@ -1,0 +1,55 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListarRaw",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::de-noaa-raw-dblanco16",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "ghcnd/",
+            "ghcnd/*"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "LeerRaw",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::de-noaa-raw-dblanco16/ghcnd/*"
+    },
+    {
+      "Sid": "ListarProcessed",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::de-noaa-processed-dblanco16",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "ghcnd/",
+            "ghcnd/*"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "EscribirProcessed",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::de-noaa-processed-dblanco16/ghcnd/*"
+    },
+    {
+      "Sid": "LeerScriptETL",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::de-noaa-processed-dblanco16/scripts/*"
+    }
+  ]
+}
