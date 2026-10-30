@@ -22,7 +22,8 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 ## Estado del proyecto
 
 - Arquitectura definida y configuración inicial de seguridad AWS completada. 
-- Próxima etapa: almacenamiento e ingesta de datos.
+- Almacenamiento e ingesta de datos en S3 raw.
+- Próxima etapa: Glue ETL
 
 **En desarrollo.**
 
