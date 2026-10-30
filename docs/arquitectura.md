@@ -56,7 +56,7 @@ La separación en tres buckets permite administrar independientemente las zonas 
 
 ## Caso de uso inicial
 
-- **Región geográfica:** Sudamérica.
+- **Región geográfica:** Argentina.
 - **Datos históricos:** 2016–2025.
 - **Evaluación predictiva:** observaciones disponibles de 2026.
 - **Objetivo del modelo:** predecir la precipitación mensual acumulada por ubicación.

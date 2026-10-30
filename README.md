@@ -4,7 +4,7 @@ Proyecto de Ingeniería de Datos en AWS utilizando información meteorológica h
 
 El objetivo es implementar un pipeline de datos de extremo a extremo que permita procesar y analizar precipitaciones históricas y desarrollar un modelo predictivo de precipitación mensual acumulada.
 
-La implementación inicial utiliza datos de Sudamérica correspondientes al período 2016–2025, con evaluación predictiva sobre datos disponibles de 2026. La arquitectura está diseñada para permitir futuras ampliaciones geográficas y temporales.
+La implementación inicial utiliza datos de un pais determinado correspondientes al período 2016–2025, con evaluación predictiva sobre datos disponibles de 2026. La arquitectura está diseñada para permitir futuras ampliaciones geográficas y temporales.
 
 ## Tecnologías
 
