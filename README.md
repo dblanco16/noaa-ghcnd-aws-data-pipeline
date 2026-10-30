@@ -17,7 +17,8 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 
 ## Documentación
 
-- [Arquitectura y decisiones técnicas](docs/arquitectura.md)
+- [Arquitectura y decisiones técnicas](docs/01_arquitectura.md)
+- [ETL - AWS Glue](docs/02_etl.md)
 
 ## Estado del proyecto
 

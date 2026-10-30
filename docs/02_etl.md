@@ -33,6 +33,8 @@ El procesamiento se implementó en `scripts/noaa_etl.py`, con las siguientes car
 
 Los registros descartados se contabilizan durante el procesamiento.
 
+- [Script ](scripts/noaa_etl.py)
+
 ## 3. Datasets de salida
 
 **S3 PROCESSED:** `de-noaa-processed-dblanco16`
