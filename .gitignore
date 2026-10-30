@@ -1,2 +1,12 @@
+# Entorno virtual y caché Python
+.venv/
 __pycache__/
-.venv
+*.pyc
+
+# Datos locales de prueba
+*.csv
+*.csv.gz
+*.parquet
+
+# Archivos temporales
+*.tmp

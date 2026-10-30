@@ -1,0 +1,46 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "ListarJobs",
+			"Effect": "Allow",
+			"Action": [
+				"glue:ListJobs",
+				"glue:GetJobs"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "EjecutarYConsultarETL",
+			"Effect": "Allow",
+			"Action": [
+				"glue:GetJob",
+				"glue:GetJobRun",
+				"glue:GetJobRuns",
+				"glue:GetTags",
+				"glue:StartJobRun"
+			],
+			"Resource": "arn:aws:glue:us-east-1:*:job/noaa-ghcnd-etl"
+		},
+		{
+			"Sid": "MonitoreoGlueStudio",
+			"Effect": "Allow",
+			"Action": "glue:UseGlueStudio",
+			"Resource": "*"
+		},
+		{
+			"Sid": "ConsultarMetricasYLogs",
+			"Effect": "Allow",
+			"Action": [
+				"cloudwatch:GetMetricData",
+				"cloudwatch:GetMetricStatistics",
+				"cloudwatch:ListMetrics",
+				"logs:DescribeLogGroups",
+				"logs:DescribeLogStreams",
+				"logs:GetLogEvents",
+				"logs:FilterLogEvents"
+			],
+			"Resource": "*"
+		}
+	]
+}

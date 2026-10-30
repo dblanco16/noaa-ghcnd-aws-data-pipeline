@@ -211,7 +211,11 @@ def csv_a_parquet(entrada, salida, dataset, lote=10000):
 
 
 def main():
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(levelname)s: %(message)s",
+        force=True
+    )
     args = argumentos()
     s3 = boto3.client("s3", region_name="us-east-1")
     claves = list(listar_estaciones(s3, args.bucket_raw, args.pais))
