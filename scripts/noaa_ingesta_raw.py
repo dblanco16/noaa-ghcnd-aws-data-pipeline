@@ -1,8 +1,8 @@
 """Ingesta parametrizable NOAA GHCN-D (S3 público -> S3 RAW privado).
 
-Sin argumentos de escritura, solo informa archivos y volumen previsto.
 Usar 
---subir para efectuar la carga; 
+--subir para efectuar la carga
+--sobrescribir junto con --subir para actualizar archivos existentes.
 --limite-estaciones para prueba pequeña.
 """
 import argparse
@@ -11,6 +11,7 @@ import gzip
 import io
 import tempfile
 from pathlib import Path
+from datetime import date
 
 import boto3
 from botocore import UNSIGNED
@@ -22,7 +23,6 @@ PREFIJO = "csv.gz/by_station/"
 DESTINO_PREDETERMINADO = "de-noaa-raw-dblanco16"
 CAMPOS = ["ID", "DATE", "ELEMENT", "DATA_VALUE", "M_FLAG", "Q_FLAG", "S_FLAG", "OBS_TIME"]
 
-
 def argumentos():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pais", default="AR", help="Código GHCN-D, por ejemplo AR")
@@ -33,8 +33,8 @@ def argumentos():
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("--limite-estaciones", type=int, default=None)
     parser.add_argument("--subir", action="store_true", help="Habilita escritura en S3 RAW")
+    parser.add_argument("--sobrescribir", action="store_true", help="Reemplaza los CSV existentes (requiere --subir)")
     return parser.parse_args()
-
 
 def existe(s3, bucket, clave):
     try:
@@ -46,10 +46,11 @@ def existe(s3, bucket, clave):
             return False
         raise
 
-
 def main():
     args = argumentos()
-    from datetime import date
+    if args.sobrescribir and not args.subir:
+        raise ValueError("--sobrescribir requiere --subir")
+        
     desde = date.fromisoformat(args.desde)
     hasta = date.fromisoformat(args.hasta)
     if desde > hasta:
@@ -99,17 +100,17 @@ def main():
     filas_total = 0
     cargadas = 0
     omitidas = 0
+    reemplazadas = 0
     for identificador, clave_origen, _ in objetos:
-        # Incorporar configuración en la ruta para evitar colisiones entre ejecuciones distintas.
-        firma_vars = "-".join(sorted(variables))
-        clave_destino = (f"ghcnd/pais={pais}/desde={desde_txt}_hasta={hasta_txt}/"
-                         f"variables={firma_vars}/{identificador}.csv")
-        if existe(privado, args.bucket_destino, clave_destino):
+        # Prefijo estable por país y estación. Los filtros se aplican al contenido.
+        clave_destino = f"ghcnd/pais={pais}/{identificador}.csv"
+        ya_existe = existe(privado, args.bucket_destino, clave_destino)
+        if ya_existe and not args.sobrescribir:
             omitidas += 1
             print(f"OMITIDO (ya existe): {identificador}")
             continue
 
-        # Archivo temporal por estación: no se conserva copia al terminar.
+       # Archivo temporal por estación: no se conserva copia al terminar.
         with tempfile.TemporaryFile(mode="w+b") as temporal:
             respuesta = publico.get_object(Bucket=ORIGEN, Key=clave_origen)
             n = 0
@@ -139,13 +140,16 @@ def main():
                 temporal.seek(0)
                 privado.upload_fileobj(temporal, args.bucket_destino, clave_destino,
                                        ExtraArgs={"ContentType": "text/csv"})
-                cargadas += 1
+                if ya_existe:
+                    reemplazadas += 1
+                    print(f"REEMPLAZADO: {identificador}: {n:,} filas")
+                else:
+                    cargadas += 1
+                    print(f"CARGADO: {identificador}: {n:,} filas")
                 filas_total += n
-                print(f"CARGADO: {identificador}: {n:,} filas")
             else:
-                print(f"SIN FILAS: {identificador}")
-    print(f"Total: {cargadas} archivos cargados, {omitidas} omitidos, {filas_total:,} filas subidas")
-
+                print(f"SIN FILAS (sin cambios en S3): {identificador}")
+    print(f"Total: {cargadas} nuevos, {reemplazadas} reemplazados, {omitidas} omitidos, {filas_total:,} filas subidas")
 
 if __name__ == "__main__":
     main()
