@@ -21,7 +21,7 @@ from botocore.exceptions import ClientError
 ORIGEN = "noaa-ghcn-pds"
 PREFIJO = "csv.gz/by_station/"
 DESTINO_PREDETERMINADO = "de-noaa-raw-dblanco16"
-CAMPOS = ["ID", "DATE", "ELEMENT", "DATA_VALUE", "M_FLAG", "Q_FLAG", "S_FLAG", "OBS_TIME"]
+CAMPOS = ["STATION", "DATE", "ELEMENT", "DATA_VALUE", "M_FLAG", "Q_FLAG", "S_FLAG", "OBS_TIME"]
 
 def argumentos():
     parser = argparse.ArgumentParser(description=__doc__)
