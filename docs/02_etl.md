@@ -73,3 +73,15 @@ Ambos datasets están particionados por país y año, sin generar particiones in
 El rol dispone de permisos específicos para leer RAW y escribir en PROCESSED.
 
 La configuración puede permanecer creada sin ejecuciones activas. El script debe estar disponible en S3 antes de ejecutar el job.
+
+### Selección del tipo de job
+
+Se seleccionó **AWS Glue Python Shell** en lugar de un job basado en Apache Spark, considerando el volumen de datos, la naturaleza de las transformaciones y la frecuencia de ejecución.
+
+El procesamiento se realiza por estación meteorológica, mediante Python, sin requerir procesamiento distribuido. Las operaciones comprenden limpieza, conversión de tipos y unidades, agregaciones temporales y generación de archivos Parquet.
+
+Se configuró una capacidad de **0,0625 DPU**, con el objetivo de minimizar el costo de ejecución y utilizar recursos acordes con el volumen inicial.
+
+Esta elección simplifica la implementación y permite reutilizar el código Python validado localmente. Su escalabilidad está condicionada por la memoria y capacidad de procesamiento de una ejecución no distribuida.
+
+Si el volumen de datos creciera significativamente, correspondería evaluar una arquitectura de procesamiento distribuido mediante AWS Glue Spark.

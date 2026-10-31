@@ -19,13 +19,15 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 
 - [Arquitectura y decisiones técnicas](docs/01_arquitectura.md)
 - [ETL - AWS Glue](docs/02_etl.md)
+- [Data Catalog - AWS Glue](docs/03_catalog.md)
 
 ## Estado del proyecto
 
 - Arquitectura definida y configuración inicial de seguridad AWS completada. 
 - Almacenamiento e ingesta de datos en S3 raw.
 - ETL con Glue procesando resultados en S3 processed.
-- Próxima etapa: Glue Data Catalog
+- Glue Data Catalog configurado: dos tablas externas Parquet y sincronización automática de particiones mediante Python y boto3.
+- Próxima etapa: consultas SQL con Amazon Athena.
 
 **En desarrollo.**
 
