@@ -24,7 +24,8 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 
 - Arquitectura definida y configuración inicial de seguridad AWS completada. 
 - Almacenamiento e ingesta de datos en S3 raw.
-- Próxima etapa: Glue ETL
+- ETL con Glue procesando resultados en S3 processed
+- Próxima etapa: Glue Data Catalog
 
 **En desarrollo.**
 

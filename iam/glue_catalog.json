@@ -1,0 +1,72 @@
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadGlueCatalog",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetDatabases",
+        "glue:GetDatabase",
+        "glue:GetTables",
+        "glue:GetTable",
+        "glue:GetTableVersion",
+        "glue:GetTableVersions",
+        "glue:SearchTables"
+      ],
+      "Resource": [
+        "arn:aws:glue:us-east-1:703823983036:catalog",
+        "arn:aws:glue:us-east-1:703823983036:database/*",
+        "arn:aws:glue:us-east-1:703823983036:table/*/*"
+      ]
+    },
+    {
+      "Sid": "ManageNoaaDatabase",
+      "Effect": "Allow",
+      "Action": [
+        "glue:CreateDatabase",
+        "glue:UpdateDatabase",
+        "glue:DeleteDatabase"
+      ],
+      "Resource": [
+        "arn:aws:glue:us-east-1:703823983036:catalog",
+        "arn:aws:glue:us-east-1:703823983036:database/noaa_ghcnd",
+        "arn:aws:glue:us-east-1:703823983036:table/noaa_ghcnd/*",
+        "arn:aws:glue:us-east-1:703823983036:userDefinedFunction/noaa_ghcnd/*"
+      ]
+    },
+    {
+      "Sid": "ManageNoaaTables",
+      "Effect": "Allow",
+      "Action": [
+        "glue:CreateTable",
+        "glue:UpdateTable",
+        "glue:DeleteTable"
+      ],
+      "Resource": [
+        "arn:aws:glue:us-east-1:703823983036:catalog",
+        "arn:aws:glue:us-east-1:703823983036:database/noaa_ghcnd",
+        "arn:aws:glue:us-east-1:703823983036:table/noaa_ghcnd/*"
+      ]
+    },
+    {
+      "Sid": "ManageNoaaPartitions",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetPartition",
+        "glue:GetPartitions",
+        "glue:BatchGetPartition",
+        "glue:CreatePartition",
+        "glue:BatchCreatePartition",
+        "glue:UpdatePartition",
+        "glue:DeletePartition",
+        "glue:BatchDeletePartition"
+      ],
+      "Resource": [
+        "arn:aws:glue:us-east-1:703823983036:catalog",
+        "arn:aws:glue:us-east-1:703823983036:database/noaa_ghcnd",
+        "arn:aws:glue:us-east-1:703823983036:table/noaa_ghcnd/*"
+      ]
+    }
+  ]
+}
