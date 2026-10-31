@@ -19,7 +19,7 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 
 - [Arquitectura y decisiones técnicas](docs/01_arquitectura.md)
 - [ETL - AWS Glue](docs/02_etl.md)
-- [Data Catalog - AWS Glue](docs/03_catalog.md)
+- [CAtalogo de Datos - AWS Glue](docs/03_catalog.md)
 
 ## Estado del proyecto
 
