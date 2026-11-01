@@ -19,7 +19,8 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 
 - [Arquitectura y decisiones técnicas](docs/01_arquitectura.md)
 - [ETL - AWS Glue](docs/02_etl.md)
-- [CAtalogo de Datos - AWS Glue](docs/03_catalog.md)
+- [Catálogo de Datos - AWS Glue](docs/03_catalog.md)
+- [Analitica - AWS Athena](docs/04_athena.md)
 
 ## Estado del proyecto
 
@@ -27,7 +28,8 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 - Almacenamiento e ingesta de datos en S3 raw.
 - ETL con Glue procesando resultados en S3 processed.
 - Glue Data Catalog configurado: dos tablas externas Parquet y sincronización automática de particiones mediante Python y boto3.
-- Próxima etapa: consultas SQL con Amazon Athena.
+- Analítica con Amazon Athena: configuración de grupo de trabajo y ejecución de una consulta sql.
+- Próxima etapa: Machine Learning.
 
 **En desarrollo.**
 
