@@ -13,7 +13,7 @@ El modelo se construyó en **Amazon SageMaker Canvas (Quick build)**, región `u
 - Predictores finales: `STATION` (categórico), `mes` y `prcp_mes_anterior`. La columna `anio` se mantuvo para la separación y trazabilidad, pero se **excluyó del entrenamiento** en Canvas.
 - Objetivo: `prcp_objetivo`, equivalente a `prcp_acumulada_mm` del mes a predecir.
 - Horizon: un mes; la predicción utiliza datos conocidos hasta el cierre del mes previo.
-- Caso de uso: [Nueva Zelanda](../scripts/dataset_ml.sql). El resultado contiene **673 ejemplos completos**, sin valores nulos ni duplicados estación-año-mes, distribuidos temporalmente:
+- Caso de uso: [Nueva Zelanda](../sql/dataset_ml.sql). El resultado contiene **673 ejemplos completos**, sin valores nulos ni duplicados estación-año-mes, distribuidos temporalmente:
 
 | Conjunto | Años | Registros |
 |---|---|---:|

@@ -24,7 +24,7 @@ La arquitectura permite incorporar nuevas fechas y regiones sin modificar su est
 | Análisis | Amazon Athena | Consultas SQL |
 | Machine Learning | Amazon SageMaker Canvas | Modelo predictivo de regresión |
 | Seguridad | AWS IAM y Amazon S3 | Permisos, cifrado y versionado |
-| Monitoreo y auditoría | CloudWatch y CloudTrail | Seguimiento y trazabilidad |
+| Monitoreo y auditoría | CloudWatch | Seguimiento y trazabilidad |
 
 ### Almacenamiento de datos — Amazon S3
 

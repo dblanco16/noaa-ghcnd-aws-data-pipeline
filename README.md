@@ -13,7 +13,7 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 - **AWS Glue:** procesamiento ETL y catalogación.
 - **Amazon Athena:** análisis mediante SQL.
 - **Amazon SageMaker Canvas:** Machine Learning.
-- **AWS IAM, CloudWatch y CloudTrail:** seguridad y monitoreo.
+- **AWS IAM y CloudWatch:** seguridad y monitoreo.
 
 ## Documentación
 
