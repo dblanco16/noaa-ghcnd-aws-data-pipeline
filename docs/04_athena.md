@@ -39,4 +39,4 @@ Del CSV descargado de Athena se verificó que el **67,7 %** de los registros men
 
 ## Posibles ampliaciones
 
-Comparación entre estaciones, patrones estacionales y análisis de anomalías. La selección de datos para entrenamiento y evaluación predictiva se desarrollará en la etapa de Machine Learning.
+Comparación entre estaciones, patrones estacionales y análisis de anomalías.
