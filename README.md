@@ -21,6 +21,7 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 - [ETL - AWS Glue](docs/02_etl.md)
 - [Catálogo de Datos - AWS Glue](docs/03_catalog.md)
 - [Analitica - AWS Athena](docs/04_athena.md)
+- [Modelo predictivo - AWS SAgemaker](docs/05_machine_learning.md)
 
 ## Estado del proyecto
 
@@ -29,9 +30,7 @@ La implementación inicial utiliza datos de un pais determinado correspondientes
 - ETL con Glue procesando resultados en S3 processed.
 - Glue Data Catalog configurado: dos tablas externas Parquet y sincronización automática de particiones mediante Python y boto3.
 - Analítica con Amazon Athena: configuración de grupo de trabajo y ejecución de una consulta sql.
-- Próxima etapa: Machine Learning.
-
-**En desarrollo.**
+- Modelado predictivo de regresión en Amazon SageMaker Canvas.
 
 ## Fuente de datos
 

@@ -1,0 +1,24 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ConsultarSageMaker",
+      "Effect": "Allow",
+      "Action": [
+        "sagemaker:ListDomains",
+        "sagemaker:ListUserProfiles",
+        "sagemaker:DescribeDomain",
+        "sagemaker:DescribeUserProfile",
+        "sagemaker:ListApps",
+        "sagemaker:DescribeApp"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AccesoPerfilCanvasNOAA",
+      "Effect": "Allow",
+      "Action": "sagemaker:CreatePresignedDomainUrl",
+      "Resource": "arn:aws:sagemaker:us-east-1:703823983036:user-profile/d-mbsvju3ptpkn/de-noaa-canvas"
+    }
+  ]
+}
